@@ -1,33 +1,29 @@
 
-def calculate_average(total):
-    return total / 5
+diccionario = {"codigo": ["001", "002", "003", "004", "005"],
+          "nombre": ["Luis", "Javier", "Pedro", "Juan", "Carlos" ],
+         "Curso": ["Comunicacion", "Matematica", " Historia", "Ciencia"," Ingles"]}
+nota_ = []
+resp = "s"
+while resp == "s":
+    codigo= input("Ingresar el codigo del alumno: ")
+    curso = input("Ingresa el nombre del curso: ")
+    nota1 = int(input("Ingrese la primera nota : "))
+    nota2 = int(input("Ingrese la segunda nota: "))
+    nota3 = int(input("Ingrese la tercera nota: "))
+    nota4 = int(input("Ingrese la cuarta nota: "))
+    x = 0
+    for i in diccionario["codigo"]:
+        if i == codigo:
+            codigoTemp = i
+            nombreTemp = diccionario["nombre"][x]
+            promedio = (nota1 + nota2 + nota3 + nota4)/4
+            registro = ["Codigo: " + str(codigoTemp) + " | " + "Nombre :" + str(nombreTemp) + " | " + "Curso :" + curso + " | " + "Promedio: " + str(promedio) + " | " +"Nota 1: " + str(nota1) + "| " + "Nota 2: " + str(nota2) + " | " + "Nota 3: " + str(nota3) + " | " + "Nota 4: " + str(nota4)]
+            f = open("examen", "a")
+            cadena = "".join(registro)
+            f.write("\n" + cadena)
+            f.close()
+        x += 1
 
-
-# Grading scale
-def find_puntos(grade):
-    if 90 <= grade <= 100:
-        return 'A'
-    elif 80 <= grade <= 89:
-        return 'B'
-    elif 70 <= grade <= 79:
-        return 'C'
-    elif 60 <= grade <= 69:
-        return 'D'
-    else:
-        return 'F'
-
-
-
-puntos = []
-for i in range(1, 6):
-    puntos = int(input('Enter puntos {0}: '.format(i)))
-    print('That\'s a(n): ' + find_puntos(puntos))
-    puntos.append(puntos)
-
-# sum of all subject marks
-total = sum(puntos)
-avg_marks = calculate_average(total)
-final_grade = find_puntos(avg_marks)
-
-print('Average grade is: ' + str(avg_marks))
-print("That's a(n): " + str(final_grade))
+    f = open("examen")
+    print(f.read())
+    f.close()
